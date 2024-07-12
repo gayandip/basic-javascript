@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color change background</title>
+
+    <style>
+        div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        button{
+            padding: 10px;
+            margin: 4px;
+            border: 2px solid black;
+
+        }
+    </style>
+</head>
+<body class="color">
+    <div id="butt">
+        <button id="pink">pink</button>
+        <button id="yellow">yellow</button>
+        <button id="green">green</button>
+    </div>
+
+    <script>
+           const button = document.querySelectorAll('button')
+           button.forEach((b)=>{
+                b.style.backgroundColor = b.id
+
+                b.addEventListener('click', (e)=>{
+                    document.querySelector('body').style.backgroundColor = e.target.id
+                })
+           })
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>random background color</title>
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2em;
+        }
+        button{
+            margin: 12px;
+            padding: 12px;
+            border: 1px solid green;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+
+    <script>
+        const start = document.querySelector('#start')
+        const stop = document.querySelector('#stop')
+
+        let ref;
+
+        start.addEventListener('click', (e)=> {
+            opt = "0123456789ABCDEF"
+            
+            ref = setInterval(()=>{
+                col ="#"
+                for (let i = 0; i < 6; i++) {
+                    let r = Math.floor(Math.random()*16)
+                    col += opt[r]
+                }
+                console.log(col);
+                document.querySelector('body').style.backgroundColor = col
+            },1000)
+        })
+
+        stop.addEventListener('click',(e)=>{
+            clearInterval(ref)
+        })
+    </script>
+</body>
+</html>

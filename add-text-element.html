@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>text element</title>
+    <style>
+      body{
+        margin: 0px;
+        padding: 0px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .can {
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 10px;
+        padding: 10px;
+        flex-direction: column;
+      }
+      .disp{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 2px;
+      }
+      select, option {
+        height: 40px;
+        width: 54px;
+        padding: 5px;
+        border: none;
+        background-color: aliceblue;
+        cursor: pointer;
+      }
+      input, button {
+        border: none;
+        background-color: rgb(163, 223, 225);
+        padding: 7px;
+      }
+      input {
+        width: 300px;
+      }
+      #btn {
+        flex-direction: row;
+      }
+      button {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="can">
+      <label for="type">select type:</label>
+      <select name="type" id="type">
+        <option value="p">p</option>
+        <option value="h1">h1</option>
+        <option value="h2">h2</option>
+        <option value="h3">h3</option>
+        <option value="div">div</option>
+      </select>
+      <input type="text" name="" id="text" />
+      <div id="btn">
+        <button id="btn1">show</button>
+        <button id="btn2">remove</button>
+      </div>
+    </div>
+    <hr />
+    <div class="disp"></div>
+
+    <script>
+      document.querySelector("#btn1").addEventListener("click", (e) => {
+        const opt = document.querySelector("#type").value;
+        const txt = document.querySelector("#text").value;
+
+        if (txt) {
+          let item = document.createElement(opt);
+          item.appendChild(document.createTextNode(txt));
+          item.setAttribute('name',txt)
+          document.querySelector(".disp").appendChild(item);
+        }
+      })
+
+      document.querySelector('#btn2').addEventListener('click',(e)=>{
+        const txt = document.querySelector("#text").value;
+        if (txt) {
+            const rem = document.getElementsByName(txt)
+            if (rem.length != 0) {
+                rem[0].remove()
+            }
+        }
+      })
+    </script>
+  </body>
+</html>
